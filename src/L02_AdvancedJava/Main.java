@@ -89,6 +89,12 @@ public class Main {
 		Admin admin1 = new Admin("David", "111",  "Admin", "dav02@fpt.com", 5000);
 		System.out.println(admin1.getInfo());
 
+		Teacher teacher1 = new Teacher("John","000", "Teacher", "joh01@fpt.com", "Math", "English");
+		System.out.println(teacher1.getInfo());
+
+		Student student1 = new Student("Ben", "333", "Student", "ben3@fpt.edu.vn", "Math", "English", "Physics");
+		System.out.println(student1.getInfo());
+
 
 
 
