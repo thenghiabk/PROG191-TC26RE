@@ -2,6 +2,7 @@ package L02_AdvancedJava;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 interface IPerson {
 	public String getInfo();
@@ -105,6 +106,8 @@ class Student extends User {
 public class Main {
 	public static void main (String[] args) {
 
+		Scanner sc = new Scanner(System.in);
+
 		List<User> users = new ArrayList<>();
 
 		User guest1 = new User("Lucy", "222",  "Guest");
@@ -124,13 +127,67 @@ public class Main {
 		users.add(teacher1);
 		users.add(student1);
 
-		// TODO: Create a menu so customers can interact with your system
-		// They can:
-		// - Add a new user
-		// - View all users
-		// - View users by group
-		// - Delete a user
-		// - Exit
+		boolean isRunning = true;
+
+		while(isRunning){
+			System.out.println("==========================");
+			System.out.println("1. Add a new user");
+			System.out.println("2. View all users");
+			System.out.println("3. View users by group");
+			System.out.println("4. Delete a user");
+			System.out.println("0. Exit");
+			System.out.println("==========================");
+
+			String userChoice = sc.nextLine();
+
+			switch (userChoice){
+				case "0": // Exit
+					isRunning = false;
+					break;
+				case "1": // Add a new user
+					System.out.println("Enter user's name: ");
+					String name = sc.nextLine();
+					System.out.println("Enter user's telephone: ");
+					String tel = sc.nextLine();
+
+					System.out.println("Choose a role (Guest/Admin/Teacher/Student");
+					String role = sc.nextLine();
+
+					User newUser = null;
+
+					if (role.equals("Guest")){ // add a new guest
+						newUser = new User(name, tel, role);
+					} else if (role.equals("Admin")){ // add a new admin
+						System.out.println("Enter user's email: ");
+						String email = sc.nextLine();
+						System.out.println("Enter user's salary: ");
+						double salary = Double.parseDouble(sc.nextLine());
+						newUser = new Admin(name, tel, role, email, salary);
+					} else if (role.equals("Teacher")){ // add a new teacher
+						// TODO
+					} else { // add a new student
+						// TODO
+					}
+
+					users.add(newUser);
+
+					break;
+				case "2": // View all users
+					for (int i = 0; i < users.size(); i++){
+						String userInfo = users.get(i).getInfo();
+						System.out.println(userInfo);
+					}
+					break;
+				case "3": // View users by group
+					// TODO
+					break;
+				case "4": // Delete a user
+					// TODO
+					break;
+			}
+		}
+
+		System.out.println("Goodbye!");
 
 
 
