@@ -124,7 +124,13 @@ public class Main {
 		users.add(teacher1);
 		users.add(student1);
 
-		// TODO
+		// TODO: Create a menu so customers can interact with your system
+		// They can:
+		// - Add a new user
+		// - View all users
+		// - View users by group
+		// - Delete a user
+		// - Exit
 
 
 
