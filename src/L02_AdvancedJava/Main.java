@@ -1,6 +1,18 @@
 package L02_AdvancedJava;
 
-class User {
+import java.util.ArrayList;
+import java.util.List;
+
+interface IPerson {
+	public String getInfo();
+	public void sayHello(String name);
+}
+
+interface ISpecialist {
+	public boolean hasCertificate();
+}
+
+class User implements IPerson {
 	// attributes
 	private String name;
 	private String tel;
@@ -18,9 +30,13 @@ class User {
 		return "Name: " + name.toUpperCase() + ", Tel: " + tel + ", Role: " + role;
 	}
 
+	public void sayHello(String name){
+		System.out.println("Hello " + name + ". How are you?");
+	}
+
 }
 
-class Admin extends User {
+class Admin extends User implements ISpecialist{
 	// attributes
 	private String email;
 	private double salary;
@@ -36,6 +52,12 @@ class Admin extends User {
 	@Override
 	public String getInfo(){
 		return super.getInfo() + ", Email: " + email + ", Salary: " + salary;
+	}
+
+
+	@Override
+	public boolean hasCertificate () {
+		return false;
 	}
 }
 
@@ -94,6 +116,10 @@ public class Main {
 
 		Student student1 = new Student("Ben", "333", "Student", "ben3@fpt.edu.vn", "Math", "English", "Physics");
 		System.out.println(student1.getInfo());
+
+		List<IPerson> users = new ArrayList<>();
+		users.add(admin1);
+		users.add(teacher1);
 
 
 
