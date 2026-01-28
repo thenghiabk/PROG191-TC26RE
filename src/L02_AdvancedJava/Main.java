@@ -35,9 +35,18 @@ class User implements IPerson {
 		return role;
 	}
 
+	public String getTel(){
+		return tel;
+	}
+
+	public String getName () {
+		return name;
+	}
+
 	public void sayHello(String name){
 		System.out.println("Hello " + name + ". How are you?");
 	}
+
 
 }
 
@@ -210,16 +219,22 @@ public class Main {
 
 					break;
 				case "4": // Delete a user
-					// TODO
+					System.out.println("Enter user's phone number: ");
+					String userToDelete = sc.nextLine();
+
+					for (int i = 0; i < users.size(); i++){
+						User u = users.get(i);
+						if (u.getTel().equalsIgnoreCase(userToDelete)){
+							users.remove(u);
+							System.out.println("User `" + u.getName() + "` has been removed.");
+							break;
+						}
+					}
+
 					break;
 			}
 		}
 
 		System.out.println("Goodbye!");
-
-
-
-
-
 	}
 }
