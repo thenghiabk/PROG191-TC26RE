@@ -28,7 +28,7 @@ public class EducationCenterGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnGroupRole = new javax.swing.ButtonGroup();
+        Roles = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -37,6 +37,9 @@ public class EducationCenterGUI extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtSalary = new javax.swing.JTextField();
+        btnAddNewUser = new javax.swing.JButton();
+        rdGuest = new javax.swing.JRadioButton();
+        rdAdmin = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,18 +54,43 @@ public class EducationCenterGUI extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 13, 172, -1));
         getContentPane().add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 53, 172, -1));
-
-        txtEmail.setEnabled(false);
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 172, -1));
 
         jLabel4.setText("Salary");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
-
-        txtSalary.setEnabled(false);
         getContentPane().add(txtSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 172, -1));
+
+        btnAddNewUser.setText("Add New User");
+        btnAddNewUser.addActionListener(this::btnAddNewUserActionPerformed);
+        getContentPane().add(btnAddNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        Roles.add(rdGuest);
+        rdGuest.setText("Guest");
+        getContentPane().add(rdGuest, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+
+        Roles.add(rdAdmin);
+        rdAdmin.setText("Admin");
+        getContentPane().add(rdAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewUserActionPerformed
+        User newUser = null;
+        if (rdGuest.isSelected()){ // create a new guest
+            String name = txtName.getText();
+            String tel = txtTel.getText();
+            newUser = new User(name, tel, "Guest");
+            System.out.println(newUser.getInfo() + " has been created.");            
+        } else if (rdAdmin.isSelected()){
+            String name = txtName.getText();
+            String tel = txtTel.getText();
+            String email = txtEmail.getText();
+            Double salary = Double.parseDouble(txtSalary.getText());
+            newUser = new Admin(name, tel, "Admin", email, salary);
+            System.out.println(newUser.getInfo() + " has been created."); 
+        }
+    }//GEN-LAST:event_btnAddNewUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,11 +118,14 @@ public class EducationCenterGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup btnGroupRole;
+    private javax.swing.ButtonGroup Roles;
+    private javax.swing.JButton btnAddNewUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JRadioButton rdAdmin;
+    private javax.swing.JRadioButton rdGuest;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtSalary;
