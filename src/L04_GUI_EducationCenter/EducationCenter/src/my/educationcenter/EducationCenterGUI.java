@@ -35,12 +35,6 @@ public class EducationCenterGUI extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         txtTel = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        btnAddNewUser = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        rdGuest = new javax.swing.JRadioButton();
-        rdAdmin = new javax.swing.JRadioButton();
-        rdStudent = new javax.swing.JRadioButton();
-        rdTeacher = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         txtSalary = new javax.swing.JTextField();
 
@@ -61,60 +55,6 @@ public class EducationCenterGUI extends javax.swing.JFrame {
         txtEmail.setEnabled(false);
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 172, -1));
 
-        btnAddNewUser.setText("Add New User");
-        btnAddNewUser.addActionListener(this::btnAddNewUserActionPerformed);
-        getContentPane().add(btnAddNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Select Role"));
-
-        btnGroupRole.add(rdGuest);
-        rdGuest.setSelected(true);
-        rdGuest.setText("Guest");
-        rdGuest.addActionListener(this::rdGuestActionPerformed);
-
-        btnGroupRole.add(rdAdmin);
-        rdAdmin.setText("Admin");
-        rdAdmin.addActionListener(this::rdAdminActionPerformed);
-
-        btnGroupRole.add(rdStudent);
-        rdStudent.setText("Student");
-
-        btnGroupRole.add(rdTeacher);
-        rdTeacher.setText("Teacher");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(rdGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(rdTeacher))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(rdAdmin)
-                        .addGap(71, 71, 71)
-                        .addComponent(rdStudent)))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rdGuest)
-                    .addComponent(rdTeacher))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rdAdmin)
-                    .addComponent(rdStudent))
-                .addGap(18, 18, 18))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 176, -1, -1));
-
         jLabel4.setText("Salary");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
@@ -123,37 +63,6 @@ public class EducationCenterGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void rdGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdGuestActionPerformed
-        txtEmail.setEnabled(false);
-        txtSalary.setEnabled(false);
-    }//GEN-LAST:event_rdGuestActionPerformed
-
-    private void rdAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdAdminActionPerformed
-        txtEmail.setEnabled(true);
-        txtSalary.setEnabled(true);
-    }//GEN-LAST:event_rdAdminActionPerformed
-
-    private void btnAddNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewUserActionPerformed
-        User newUser = null;
-        if (rdGuest.isSelected())
-        {
-            String name = txtName.getText();
-            String tel = txtTel.getText();
-            newUser = new User(name, tel, "Guest");
-        } else if (rdAdmin.isSelected()){
-            String name = txtName.getText();
-            String tel = txtTel.getText();
-            String email = txtEmail.getText();
-            Double salary = Double.valueOf(txtSalary.getText());
-            newUser = new Admin(name, tel, "Admin", email, salary);
-        }
-        
-        if (newUser != null){
-            System.out.println(newUser.getInfo() + " has been created.");
-        }
-        
-    }//GEN-LAST:event_btnAddNewUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,17 +90,11 @@ public class EducationCenterGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddNewUser;
     private javax.swing.ButtonGroup btnGroupRole;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton rdAdmin;
-    private javax.swing.JRadioButton rdGuest;
-    private javax.swing.JRadioButton rdStudent;
-    private javax.swing.JRadioButton rdTeacher;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtSalary;
