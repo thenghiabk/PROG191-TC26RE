@@ -31,6 +31,10 @@ class User implements IPerson {
 		return "Name: " + name.toUpperCase() + ", Tel: " + tel + ", Role: " + role;
 	}
 
+	public String getRole(){
+		return role;
+	}
+
 	public void sayHello(String name){
 		System.out.println("Hello " + name + ". How are you?");
 	}
@@ -164,9 +168,23 @@ public class Main {
 						double salary = Double.parseDouble(sc.nextLine());
 						newUser = new Admin(name, tel, role, email, salary);
 					} else if (role.equals("Teacher")){ // add a new teacher
-						// TODO
+						System.out.println("Enter user's email: ");
+						String email = sc.nextLine();
+						System.out.println("Enter subject 1: ");
+						String subject1 = sc.nextLine();
+						System.out.println("Enter subject 2: ");
+						String subject2 = sc.nextLine();
+						newUser = new Teacher(name, tel, role, email, subject1, subject2);
 					} else { // add a new student
-						// TODO
+						System.out.println("Enter user's email: ");
+						String email = sc.nextLine();
+						System.out.println("Enter subject 1: ");
+						String subject1 = sc.nextLine();
+						System.out.println("Enter subject 2: ");
+						String subject2 = sc.nextLine();
+						System.out.println("Enter subject 3: ");
+						String subject3 = sc.nextLine();
+						newUser = new Student(name, tel, role, email, subject1, subject2, subject3);
 					}
 
 					users.add(newUser);
@@ -179,7 +197,17 @@ public class Main {
 					}
 					break;
 				case "3": // View users by group
-					// TODO
+					System.out.println("Enter a group (Guest/Admin/Teacher/Student) ");
+					String roleToView = sc.nextLine();
+
+					for (int i = 0; i < users.size(); i++){
+						User u = users.get(i);
+						if (u.getRole().equalsIgnoreCase(roleToView)){
+							String userInfo = u.getInfo();
+							System.out.println(userInfo);
+						}
+					}
+
 					break;
 				case "4": // Delete a user
 					// TODO
